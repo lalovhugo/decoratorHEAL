@@ -24,16 +24,16 @@ public class Main {
 
         // 5. Probar accesos
         System.out.println("--- Consultando catálogos inicialmente ---");
-        mostrarCatalogo(disney);
-        mostrarCatalogo(paramount);
-        mostrarCatalogo(warner);
+        probarConsulta(disneyProtegido);
+        probarConsulta(paramountProtegido); // Debería fallar (no tiene Paramount)
+        probarConsulta(warnerProtegido);
 
         System.out.println("\n\n--- Activando suscripción de Paramount ---");
         usuario.activarSuscripcion(ServicioStreaming.PARAMOUNT);
-        mostrarCatalogo(paramount);
+        probarConsulta(paramountProtegido);
     }
 
-    private static void mostrarCatalogo(CatalogoPeliculas catalogo) {
+    private static void probarConsulta(CatalogoPeliculas catalogo) {
         System.out.println("\nCatalogo " + catalogo.getServicio().getNombre() + ":");
         try {
             for (String pelicula : catalogo.obtenerPeliculas()) {
